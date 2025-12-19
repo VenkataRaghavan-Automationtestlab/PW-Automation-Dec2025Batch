@@ -22,7 +22,7 @@ public class LaunchBrowser {
 		page.fill("#password", "admin123");
 		page.click("[type='submit']");
 		
-//		browser.close();
-//		pw.close();
+		browser.close();
+		pw.close();
 	}
 }
