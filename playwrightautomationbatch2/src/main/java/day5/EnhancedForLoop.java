@@ -26,6 +26,9 @@ public class EnhancedForLoop {
 		
 		List<String> texts = page.locator("//*[@class='prod-card']//*[@class='prod-title']").allTextContents();
 		for (String t : texts) {
+			if (t.equalsIgnoreCase("Isha Bolt T-Shirt")) {
+				continue;
+			}
 		 System.out.println("Item: " + t);
 		}
 	}
