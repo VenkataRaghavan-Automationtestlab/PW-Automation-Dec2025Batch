@@ -1,6 +1,8 @@
 package day3;
 
-public class Variables {
+import day7.AccessSpecifiers;
+
+public class Variables extends AccessSpecifiers{
 	String name;
 	int age;
 	
@@ -10,9 +12,7 @@ public class Variables {
 	
 	public static void main(String[] args) {
 		
-		Variables v = new Variables();
-		v.name = "Playwright";
-		v.age = 56;
-		v.showDetails();
+		Variables a = new Variables();
+		a.logMessage();
 	}
 }
