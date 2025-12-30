@@ -2,7 +2,7 @@ package day9;
 
 public interface WaterVehicle {
 	
-	static void waterinfo() {
+	default void waterinfo() {
 		System.out.println("test watervehicle");
 	}
 }
