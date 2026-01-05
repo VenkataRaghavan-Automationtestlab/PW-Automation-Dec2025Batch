@@ -1,7 +1,6 @@
 package day12;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
@@ -13,7 +12,6 @@ public class Recorder {
 		    try (Playwright playwright = Playwright.create()) {
 		      Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
 		        .setHeadless(false));
-		      BrowserContext context = browser.newContext();
 		      Page page = browser.newPage();
 		      page.navigate("https://swautomationtester-dot.github.io/IshaDemoSite/index.html");	
 		      assertThat(page.getByRole(AriaRole.TEXTBOX, new Page.GetByRoleOptions().setName("Username"))).isVisible();

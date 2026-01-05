@@ -26,7 +26,5 @@ public class ParaConst {
 	public static void main(String[] args) {
 		ParaConst pc = new ParaConst(101, "Venkat");
 		System.out.println(pc.id);
-		ParaConst pc1 = new ParaConst("Venkat");
-		ParaConst pc2 = new ParaConst();
 	}
 }
