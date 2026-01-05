@@ -1,5 +1,7 @@
 package day13;
 
+import java.util.Arrays;
+
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
@@ -10,10 +12,10 @@ public class TestContext {
 	
 	public static void main(String[] args) {
 		try (Playwright pw = Playwright.create()) {
-			Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
+			Browser browser = pw.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000).setArgs(Arrays.asList("--start-maximized")));
 			Browser browser1 = pw.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
 			
-			BrowserContext context1 = browser.newContext();
+			BrowserContext context1 = browser.newContext(new Browser.NewContextOptions().setViewportSize(null));
 			Page pageA = context1.newPage();
 
 			pageA.navigate("https://www.saucedemo.com/");
