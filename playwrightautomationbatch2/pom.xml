@@ -20,5 +20,10 @@
 			<artifactId>playwright</artifactId>
 			<version>1.57.0</version>
 		</dependency>
+		<dependency>
+			<groupId>PlaywrightJava</groupId>
+			<artifactId>PlaywrightJavaDec</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 </project>

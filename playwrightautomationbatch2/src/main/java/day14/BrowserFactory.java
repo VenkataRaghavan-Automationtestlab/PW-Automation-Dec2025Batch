@@ -22,7 +22,7 @@ public class BrowserFactory {
 		int width = (int) screenSize.getWidth();
 		int height = (int) screenSize.getHeight();
 
-		BrowserType.LaunchOptions options = new BrowserType.LaunchOptions().setHeadless(headless);
+		BrowserType.LaunchOptions options = new BrowserType.LaunchOptions().setHeadless(headless).setSlowMo(2000);
 
 		if (fullScreen && (browserName.equalsIgnoreCase("chromium") || browserName.equalsIgnoreCase("chrome")
 				|| browserName.equalsIgnoreCase("edge"))) {
