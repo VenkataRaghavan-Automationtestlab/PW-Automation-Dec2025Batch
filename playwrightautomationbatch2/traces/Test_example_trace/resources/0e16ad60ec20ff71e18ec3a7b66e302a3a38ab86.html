@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VR QA Academy - Automation Practice – Labs Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="images/Header Icon.png">
+
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="styles/layout.css">
+<link rel="stylesheet" href="styles/components.css">
+
+<style>
+/* ================= HERO / BANNER ================= */
+.hero-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+  padding: 0 12px;
+}
+
+.banner-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  height: 340px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  position: relative;
+  background: #000;
+}
+
+.banner-strip {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+.banner-slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Buttons */
+.banner-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(11,44,85,0.85);
+  color: white;
+  border: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  z-index: 10;
+}
+
+.banner-nav.prev { left: 12px; }
+.banner-nav.next { right: 12px; }
+
+/* Responsive banner height */
+@media (max-width: 768px) {
+  .banner-wrapper { height: 220px; }
+}
+
+@media (max-width: 480px) {
+  .banner-wrapper { height: 180px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= GLOBAL HEADER INCLUDE ================= -->
+<div id="headerContainer"></div>
+
+<!-- ================= BANNER ================= -->
+<section class="hero-section">
+  <div class="banner-wrapper">
+    <button class="banner-nav prev" onclick="prevSlide()">❮</button>
+    <button class="banner-nav next" onclick="nextSlide()">❯</button>
+
+    <div class="banner-strip" id="bannerStrip">
+      <div class="banner-slide">
+        <img src="images/VR-QA-Banner1.png" alt="Banner 1">
+      </div>
+      <div class="banner-slide">
+        <img src="images/VR-QA-Banner2.png" alt="Banner 2">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAIN ================= -->
+<main class="dashboard">
+
+  <div class="card-grid">
+
+    <div class="lab-card" onclick="go('inputs')">
+      <div class="lab-icon">📝</div>
+      <div class="lab-title">Inputs</div>
+      <div class="lab-desc">Text fields, password, validation, forms</div>
+    </div>
+
+    <div class="lab-card" onclick="go('dropdowns')">
+      <div class="lab-icon">⬇️</div>
+      <div class="lab-title">Dropdowns</div>
+      <div class="lab-desc">Select, auto-suggest, dynamic lists</div>
+    </div>
+
+    <div class="lab-card" onclick="go('checkbox-radio')">
+      <div class="lab-icon">☑️</div>
+      <div class="lab-title">Checkbox & Radio</div>
+      <div class="lab-desc">Single, multi-select, states</div>
+    </div>
+
+    <div class="lab-card" onclick="go('alerts')">
+      <div class="lab-icon">🚨</div>
+      <div class="lab-title">Alerts</div>
+      <div class="lab-desc">JS alerts, confirms, prompts, modals</div>
+    </div>
+
+    <div class="lab-card" onclick="go('tables')">
+      <div class="lab-icon">📊</div>
+      <div class="lab-title">Web Tables</div>
+      <div class="lab-desc">Dynamic tables, rows, columns</div>
+    </div>
+
+    <div class="lab-card" onclick="go('shadow')">
+      <div class="lab-icon">🌑</div>
+      <div class="lab-title">Shadow DOM</div>
+      <div class="lab-desc">Open shadow, closed shadow, nested</div>
+    </div>
+
+    <div class="lab-card" onclick="go('mouse-hover')">
+      <div class="lab-icon">🖱️</div>
+      <div class="lab-title">Mouse Hover</div>
+      <div class="lab-desc">Hover menus, tooltips</div>
+    </div>
+
+    <div class="lab-card" onclick="go('right-click')">
+      <div class="lab-icon">🖱️</div>
+      <div class="lab-title">Right Click</div>
+      <div class="lab-desc">Context menu handling</div>
+    </div>
+
+    <div class="lab-card" onclick="go('double-click')">
+      <div class="lab-icon">🖱️</div>
+      <div class="lab-title">Double Click</div>
+      <div class="lab-desc">Double click actions</div>
+    </div>
+
+    <div class="lab-card" onclick="go('drag-drop')">
+      <div class="lab-icon">🧲</div>
+      <div class="lab-title">Drag & Drop</div>
+      <div class="lab-desc">HTML5 and JS drag drop</div>
+    </div>
+
+    <div class="lab-card" onclick="go('slider')">
+      <div class="lab-icon">🎚️</div>
+      <div class="lab-title">Slider</div>
+      <div class="lab-desc">Range inputs, draggable sliders</div>
+    </div>
+
+    <div class="lab-card" onclick="go('Multilanguage')">
+      <div class="lab-icon">🌍</div>
+      <div class="lab-title">Multilanguage</div>
+      <div class="lab-desc">Multilanguage Selections</div>
+    </div>
+
+    <div class="lab-card" onclick="go('uploads')">
+      <div class="lab-icon">📤</div>
+      <div class="lab-title">File Upload</div>
+      <div class="lab-desc">Input upload, FileChooser</div>
+    </div>
+
+    <div class="lab-card" onclick="go('downloads')">
+      <div class="lab-icon">📥</div>
+      <div class="lab-title">File Download</div>
+      <div class="lab-desc">Save, verify, rename files</div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  © VR QA Academy Automation Practice Platform
+</footer>
+
+<!-- ================= BANNER SCRIPT ================= -->
+<script>
+let index = 0;
+const strip = document.getElementById("bannerStrip");
+
+function updateBanner() {
+  strip.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+  index = (index + 1) % 2;
+  updateBanner();
+}
+
+function prevSlide() {
+  index = (index - 1 + 2) % 2;
+  updateBanner();
+}
+
+/* Auto slide every 5 seconds */
+setInterval(nextSlide, 5000);
+</script>
+
+<!-- ================= HEADER LOADER ================= -->
+<script>
+(function(){
+  const basePath = "";
+
+  fetch(basePath + "includes/header.html")
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("headerContainer").innerHTML = html;
+      const script = document.createElement("script");
+      script.src = basePath + "includes/header.js";
+      document.body.appendChild(script);
+    });
+})();
+</script>
+
+<script>
+function go(lab) {
+  window.location.href = "labs/" + lab + ".html";
+}
+</script>
+
+</body>
+</html>

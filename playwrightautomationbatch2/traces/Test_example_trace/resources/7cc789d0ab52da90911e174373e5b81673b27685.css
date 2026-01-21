@@ -1,0 +1,433 @@
+/* ================= COMPONENTS ================= */
+
+/* Prevent any horizontal overflow */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== CARDS ===== */
+.card{
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow .2s ease, transform .15s ease;
+}
+
+.field{
+  position: relative;
+}
+
+/* Only dropdown cards allow overflow */
+.card:has(.searchable-list),
+.card:has(#multiOptions),
+.card:has(#suggestions){
+  overflow: visible !important;
+}
+
+.card:hover{
+  box-shadow: 0 16px 36px rgba(37,99,235,.25);
+}
+
+.card-header{
+  padding: 12px 16px;
+  border-bottom: 1px dashed var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.card-title{
+  margin:0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--brand-blue-dark);
+}
+
+.card-body{
+  padding: 14px 16px;
+}
+
+/* ================= TOAST SYSTEM ================= */
+
+.toast-container {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9000;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  min-width: 240px;
+  max-width: 360px;
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--brand-blue);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  border-radius: 12px;
+
+  padding: 12px 16px;
+  font-weight: 600;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all .25s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.success { border-left-color: var(--success); }
+.toast.error   { border-left-color: var(--danger); }
+.toast.warning { border-left-color: var(--warning); }
+.toast.info    { border-left-color: var(--brand-blue); }
+
+/* ===== FORMS ===== */
+.field{ margin-bottom: 14px; }
+
+.field-label{
+  display:block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.control{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 10px 12px;
+  background: color-mix(in oklab, var(--surface) 30%, transparent);
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.control:focus-within{
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.25);
+  background: color-mix(in oklab, var(--surface) 60%, transparent);
+}
+
+.control input,
+.control select{
+  flex:1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: .95rem;
+}
+
+/* ===== BUTTONS ===== */
+.row-actions{ display:flex; gap: 10px; }
+
+.btn{
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .12s ease, border-color .15s ease, box-shadow .15s ease;
+  text-decoration: none;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  border-color: var(--brand-blue);
+  box-shadow: 0 6px 14px rgba(37,99,235,.25);
+}
+
+.btn:active{
+  transform: translateY(0) scale(.98);
+}
+
+/* Primary = ORANGE */
+.btn-primary{
+  background: linear-gradient(135deg, var(--brand-orange), #fb923c);
+  border: none;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(249,115,22,0.35);
+}
+
+/* Secondary = BLUE */
+.btn-secondary{
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+  border: none;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.35);
+}
+
+/* ===== TABLES ===== */
+.table-wrap{
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border:1px solid var(--border);
+}
+
+table{
+  width:100%;
+  border-collapse: collapse;
+  background: color-mix(in oklab, var(--surface) 20%, transparent);
+}
+
+th, td{
+  padding: 12px;
+  border-bottom: 1px dashed var(--border);
+}
+
+th{
+  color: var(--muted);
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+/* ================= DASHBOARD ================= */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.lab-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 22px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.lab-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--brand-blue);
+  box-shadow: 0 18px 45px rgba(37,99,235,.35);
+}
+
+.lab-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.lab-title {
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--brand-blue-dark);
+}
+
+.lab-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* Validation states */
+.control.valid { border-color: var(--success) !important; }
+.control.invalid { border-color: var(--danger) !important; }
+
+/* Tooltip-style error */
+.error {
+  display: block;
+  margin-top: 6px;
+  font-size: .85rem;
+  color: var(--danger);
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.4);
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.hidden { display: none !important; }
+
+/* Password strength meter */
+.strength-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--surface) 60%, transparent);
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  transition: width .25s ease, background .25s ease;
+}
+
+.strength-weak { background: var(--danger); }
+.strength-medium { background: var(--warning); }
+.strength-strong { background: var(--success); }
+
+/* ================= USER AVATAR MENU ================= */
+
+.user-menu{
+  position: relative;
+}
+
+.avatar-btn{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid var(--brand-blue);
+  transition: box-shadow .2s ease, transform .1s ease;
+}
+
+.avatar-btn:hover{
+  box-shadow: 0 0 0 4px rgba(37,99,235,.35), 0 8px 20px rgba(0,0,0,.25);
+  transform: translateY(-1px);
+}
+
+.avatar-btn img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dropdown panel */
+.user-dropdown{
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  min-width: 220px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 18px 45px rgba(0,0,0,.35);
+  padding: 8px;
+  z-index: 7000;
+
+  opacity: 0;
+  transform: translateY(-8px) scale(.98);
+  pointer-events: none;
+  transition: all .18s ease;
+}
+
+.user-dropdown.show{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ================= MODAL SYSTEM ================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 8000;
+}
+
+.modal-backdrop.show {
+  display: flex;
+}
+
+.modal {
+  width: min(420px, 92vw);
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ================= RESPONSIVE LAYER ================= */
+
+@media (max-width: 1024px) {
+  .lab-icon { font-size: 36px; }
+}
+
+@media (max-width: 768px) {
+
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .toast-container {
+    left: 12px;
+    right: 12px;
+    align-items: stretch;
+  }
+
+  .toast {
+    max-width: 100%;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .lab-icon { font-size: 32px; }
+  .lab-title { font-size: 15px; }
+
+  .btn {
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+
+  .modal {
+    width: 94vw;
+  }
+
+}
+
+/* ================= GLOBAL RESPONSIVE COMPONENTS ================= */
+
+/* Cards grid */
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Tables must scroll horizontally on mobile */
+@media (max-width: 768px) {
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 600px;
+  }
+}
+
+/* Inputs & controls */
+@media (max-width: 768px) {
+  input, select, textarea, button {
+    max-width: 100%;
+  }
+}
+
+/* Modals */
+@media (max-width: 480px) {
+  .modal {
+    width: 95vw !important;
+  }
+}
