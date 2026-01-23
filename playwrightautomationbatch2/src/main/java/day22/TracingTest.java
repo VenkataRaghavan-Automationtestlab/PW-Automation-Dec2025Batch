@@ -10,38 +10,29 @@ import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
 
 public class TracingTest {
-	
+
 	public static void main(String[] args) {
-		Playwright playwright = Playwright.create();
-		Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
-		BrowserContext context = browser.newContext();
-		
-		Page page = context.newPage();
+		try (Playwright playwright = Playwright.create()) {
+			Browser browser = playwright.chromium()
+					.launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(1000));
+			BrowserContext context = browser.newContext();
+			Page page = context.newPage();
 
-		// START TRACE
-		context.tracing().start(
-		new Tracing.StartOptions()
-		.setScreenshots(true)
-		.setSnapshots(true)
-		.setSources(true)
-		);
+			// START TRACE
+			context.tracing().start(new Tracing.StartOptions().setScreenshots(true).setSnapshots(true).setSources(true));
 
-		page.navigate("https://vrqaacademy.co.in/");
-		page.click("text=Text fields, password, validation, forms");
-		page.fill("#in-firstna", "Venkat");
-		page.fill("#in-lastna", "raghavan");
-		
-		
-		// STOP TRACE
-		context.tracing().stop(
-		new Tracing.StopOptions()
-		.setPath(Paths.get("traces/Test_Failexample_trace.zip"))
-		);
+			page.navigate("https://vrqaacademy.co.in/");
+			page.click("text=Text fields, password, validation, forms");
+			page.fill("#in-firstna", "Venkat");
+			page.fill("#in-lastna", "raghavan");
 
-		context.close();
-		browser.close();
-		playwright.close(); 
+			// STOP TRACE
+			context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("traces/Test_Failexample_trace.zip")));
 
+			context.close();
+			browser.close();
+			playwright.close();
+		}
 	}
 
 }
