@@ -71,7 +71,11 @@ public class BrowserFactory {
 			context = browser.newContext(new Browser.NewContextOptions());
 		}
 		
-		return context.newPage();
+		Page page = context.newPage();
+		page.setDefaultTimeout(10000); // optional
+		page.setDefaultNavigationTimeout(30000); // optional
+		
+		return page;
 	}
 
 	public static void closeBrowser() {
