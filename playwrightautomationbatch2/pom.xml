@@ -20,11 +20,6 @@
 			<artifactId>playwright</artifactId>
 			<version>1.57.0</version>
 		</dependency>
-		<dependency>
-			<groupId>PlaywrightJava</groupId>
-			<artifactId>PlaywrightJavaDec</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 		<!-- Source: https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -36,6 +31,12 @@
 			<groupId>PW-Framework</groupId>
 			<artifactId>PW-TestNGFW</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+		<!-- Extent Reports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.1.1</version>
 		</dependency>
 	</dependencies>
 </project>
