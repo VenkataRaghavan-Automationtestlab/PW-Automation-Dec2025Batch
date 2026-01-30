@@ -11,6 +11,11 @@ public class StaticWebTableHandling {
 		Page page = BrowserFactory.initBrowser("chrome", false, true);
 		page.navigate("https://vrqaacademy.co.in/labs/tables.html");
 		
+		page.onceDialog(dialog -> dialog.accept());
+
+		page.locator("#tableBody tr:has(td:text('Cypress')) button:has-text('Delete')").click();
+
+		
 //		Locator rows = page.locator("//*[@id='staticTable']/tbody/tr");
 //		int rowcount = rows.count();
 //		

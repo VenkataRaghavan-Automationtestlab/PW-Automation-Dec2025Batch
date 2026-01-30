@@ -46,7 +46,7 @@ public class TestExtentReport {
 		test.info("Clicked login");
 		
 		// 4. Screenshot
-		String path = "screenshot.png";
+		String path = "screenshot/screenshot.png";
 		page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)));
 		test.addScreenCaptureFromPath(path);
 
