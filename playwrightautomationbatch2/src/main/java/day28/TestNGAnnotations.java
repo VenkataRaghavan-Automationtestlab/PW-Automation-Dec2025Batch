@@ -1,5 +1,7 @@
 package day28;
 
+import static org.testng.Assert.fail;
+
 import org.testng.annotations.Test;
 
 public class TestNGAnnotations {
@@ -13,6 +15,7 @@ public class TestNGAnnotations {
 	// test case 2
 	@Test(groups = {"Smoke"})
 	public void testCase2() {
+		fail();
 		System.out.println("----in test case 2");
 	}
 
