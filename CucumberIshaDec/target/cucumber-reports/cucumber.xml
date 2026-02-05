@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="9.818" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Login into VR Shopping Site" name="TC001_Login with valid credentials - Example #1.1" time="8.124">
+<system-out><![CDATA[
+Given Open the chrome browser...............................................passed
+And load the application URL................................................passed
+When enter the valid username "admin".......................................passed
+And enter the valid password "admin123".....................................passed
+Then Click on login button..................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Login into VR Shopping Site" name="TC001_Login with valid credentials - Example #1.2" time="1.486">
+<system-out><![CDATA[
+Given Open the chrome browser...............................................passed
+And load the application URL................................................passed
+When enter the valid username "admin".......................................passed
+And enter the valid password "admin123".....................................passed
+Then Click on login button..................................................passed
+]]></system-out>
+</testcase>
+</testsuite>
